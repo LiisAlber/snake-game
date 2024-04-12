@@ -1,3 +1,4 @@
+
 class GameBoard {
 
     gameBoardTable = document.getElementById('game-board');
@@ -19,15 +20,23 @@ class GameBoard {
 
                 const cellTd = document.createElement('td');
                 const id = i + '-' + j;
-                cellTd.setAttribute('id', id);
+                cellTd.classList.add('id', id);
 
-                if ( snakeCoordinates.includes(id) ){
-                    cellTd.classList.add('snake');
-                }
+                if (snakeCoordinates.includes(id) ){
+                    if (id==snakeCoordinates[0] ){
+                        cellTd.innerText = '🐞';
+                        
+                    } else {
+                        cellTd.innerText = '🔴';
+                        cellTd.classList.add('snake');
+                    }
+
+                    }
 
                 const foodCoordinates = food.y +'-' + food.x;
                 if ( id == foodCoordinates ){
-                    cellTd.classList.add('food');
+                    cellTd.innerText = food.getEmoji();
+                    // cellTd.classList.add('food');
                 }
 
                 rowTr.append(cellTd);

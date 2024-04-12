@@ -1,7 +1,11 @@
 class Food {
 
+    emojis = ['🍓'];
+
+
     y;
     x;
+    emoji;
 
     constructor ( boardSize, snakeCoordinates ) {
 
@@ -13,7 +17,13 @@ class Food {
             c = this.y + '-' + this.x;
         } while ( snakeCoordinates.includes(c) );
 
-    
+        const emojiIndex = Math.floor(Math.random() * this.emojis.length);
+        this.emoji = this.emojis[emojiIndex];
+
+    }
+
+    getEmoji () {
+        return this.emoji;
     }
 }
 
